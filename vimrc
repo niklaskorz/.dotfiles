@@ -10,14 +10,25 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'bling/vim-airline'
+Plugin 'majutsushi/tagbar'
 Plugin 'jszakmeister/vim-togglecursor'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'fatih/vim-go'
+Plugin 'othree/html5.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'tomasr/molokai'
 
 call vundle#end()
+
+" Plugin conf
+let g:jsx_ext_required=0
 
 filetype indent plugin on
 syntax on
@@ -44,6 +55,7 @@ set cmdheight=1
 set number
 set notimeout ttimeout ttimeoutlen=200
 set pastetoggle=<F11>
+set clipboard=unnamedplus
 
 " Indentation
 set shiftwidth=4
@@ -85,6 +97,8 @@ nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>ü :let @/=""<CR>
 " NERDTree
 nnoremap <leader>n :NERDTree<CR>
+" Tag window
+nnoremap <leader>t :TagbarToggle<CR>
 
 " Next / previous buffer
 nnoremap ö :bp<CR>
