@@ -32,7 +32,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-setxkbmap de
+setxkbmap de -option caps:escape
 
 xmodmap -e "clear Lock"
 xmodmap -e "keycode 0x42=Escape"

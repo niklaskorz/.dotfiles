@@ -127,8 +127,11 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% &&
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pkill -RTMIN+1 i3blocks
 bindsym XF86HomePage exec caja
 bindsym F9 exec playerctl play-pause
+#bindsym F9 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 bindsym F7 exec playerctl previous
+#bindsym F7 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 bindsym F8 exec playerctl next
+#bindsym F8 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -175,11 +178,28 @@ gaps inner 10
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+set $bg #1d1f21
+set $text #c5c8c6
+set $bold #ffffff
+set $black #1d1f21
+set $red #912226
+
 bar {
         #status_command $HOME/bin/conky-i3bar
         status_command i3blocks
         tray_output primary
-        #height 25
+        position top
+        
+        colors {
+            background $bg
+            statusline $bold
+            separator $text
+
+            focused_workspace $text $text $bg
+            active_workspace $text $text $black
+            inactive_workspace $bg $bg $text
+            urgent_workspace $red $red $bg
+        }
 }
 
 # vim:filetype=i3
