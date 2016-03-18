@@ -24,6 +24,7 @@ Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'tomasr/molokai'
+Plugin 'editorconfig/editorconfig-vim'
 
 call vundle#end()
 
@@ -56,6 +57,15 @@ set number
 set notimeout ttimeout ttimeoutlen=200
 set pastetoggle=<F11>
 set clipboard=unnamedplus
+
+" Platform specific
+if has("unix")
+    let s:uname = system("echo -n \"$(uname)\"")
+    if s:uname == "Darwin\n"
+        set clipboard=unnamed
+    endif
+endif
+
 
 " Indentation
 set shiftwidth=4
