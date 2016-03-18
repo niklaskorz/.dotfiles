@@ -60,6 +60,15 @@ set notimeout ttimeout ttimeoutlen=200
 set pastetoggle=<F11>
 set clipboard=unnamedplus
 
+" Platform specific
+if has("unix")
+    let s:uname = system("echo -n \"$(uname)\"")
+    if s:uname == "Darwin\n"
+        set clipboard=unnamed
+    endif
+endif
+
+
 " Indentation
 set shiftwidth=4
 set softtabstop=4
