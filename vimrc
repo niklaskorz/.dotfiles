@@ -2,39 +2,45 @@
 set nocompatible
 filetype off
 
-" Vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" vim-plug
+call plug#begin('~/.vim/plugged')
 
-" Vundle Plugins
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'PotatoesMaster/i3-vim-syntax'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'bling/vim-airline'
-Plugin 'majutsushi/tagbar'
-"Plugin 'jszakmeister/vim-togglecursor'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'fatih/vim-go'
-Plugin 'othree/html5.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'tomasr/molokai'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'terryma/vim-multiple-cursors'
+" Plugins
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'bling/vim-airline'
+Plug 'majutsushi/tagbar'
+"Plug 'jszakmeister/vim-togglecursor'
+Plug 'kchmck/vim-coffee-script'
+Plug 'fatih/vim-go'
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'tomasr/molokai'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'Shougo/deoplete.nvim'
+Plug 'ternjs/tern_for_vim'
 
-call vundle#end()
-
-" Plugin conf
-let g:jsx_ext_required=0
-
+call plug#end()
 filetype indent plugin on
 syntax on
+
+" Plug conf
+let g:airline_powerline_fonts = 1
+let g:deoplete#enable_at_startup=1
+let g:ctrlp_map='<c-p>'
+let g:javascript_enable_domhtmlcss=1
+let g:jsx_ext_required=0
+let g:syntastic_javascript_checkers=['eslint']
+let g:tern_show_arguments_hints='on_hold'
+let g:tern_show_signature_in_pum=1
 
 " Must have
 set hidden
@@ -87,8 +93,6 @@ if has('gui_running')
     set guioptions-=m
 endif
 
-let g:airline_powerline_fonts = 1
-
 " Relative line numbers
 set relativenumber
 
@@ -130,7 +134,7 @@ nnoremap j gj
 nnoremap k gk
 nnoremap . :
 
-nnoremap / /\v
-vnoremap / /\v
-nnoremap <tab> %
-vnoremap <tab> %
+"nnoremap / /\v
+"vnoremap / /\v
+"nnoremap <tab> %
+"vnoremap <tab> %

@@ -1,0 +1,1 @@
+/Volumes/HD/Users/niklaskorz/.dotfiles/vimrc
