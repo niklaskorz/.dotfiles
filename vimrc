@@ -6,6 +6,7 @@ filetype off
 call plug#begin('~/.vim/plugged')
 
 " Plugins
+Plug 'xolox/vim-misc'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
@@ -19,21 +20,28 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'itchyny/lightline.vim'
 Plug 'majutsushi/tagbar'
-"Plug 'jszakmeister/vim-togglecursor'
+Plug 'jszakmeister/vim-togglecursor'
 Plug 'pangloss/vim-javascript'
 Plug 'sheerun/vim-polyglot'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'tomasr/molokai'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'Shougo/deoplete.nvim'
-Plug 'ternjs/tern_for_vim'
+Plug 'Valloric/YouCompleteMe'
+" Plug 'zefei/vim-wintabs'
+Plug 'ap/vim-buftabline'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'xolox/vim-session'
+Plug 'godlygeek/tabular'
+Plug 'mattn/emmet-vim'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 filetype indent plugin on
 syntax on
 
 " Plug conf
+let g:session_autosave = 'no'
 let g:airline_powerline_fonts = 1
 let g:deoplete#enable_at_startup=1
 let g:ctrlp_map='<c-p>'
@@ -43,6 +51,26 @@ let g:used_javascript_libs='jquery,underscore,angularjs,react,flux,chai,jasmine'
 let g:syntastic_javascript_checkers=['eslint']
 let g:tern_show_arguments_hints='on_hold'
 let g:tern_show_signature_in_pum=1
+
+" YCM
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger = '<nop>'
+let g:ulti_expand_or_jump_res = 0
+function ExpandSnippetOrCR()
+    let snippet = UltiSnips#ExpandSnippetOrJump()
+    if g:ulti_expand_or_jump_res > 0
+        return snippet
+    else
+        return "\<CR>"
+    endif
+endfunction
+inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCR()<CR>" : "\<CR>"
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 " Must have
 set hidden
