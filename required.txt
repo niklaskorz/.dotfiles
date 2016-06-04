@@ -1,0 +1,5 @@
+For linux:
+i3
+lm_sensors
+sysstat
+alsa-utils
